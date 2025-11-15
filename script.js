@@ -102,7 +102,7 @@ function copyEmail() {
         
         // Reset after 2 seconds
         setTimeout(() => {
-            copyBtnText.textContent = 'Copy';
+            copyBtnText.textContent = 'Copy Email';
             copyBtn.classList.remove('copied');
         }, 2000);
     }).catch(err => {
@@ -116,11 +116,14 @@ function copyEmail() {
             copyBtnText.textContent = 'Copied!';
             copyBtn.classList.add('copied');
             setTimeout(() => {
-                copyBtnText.textContent = 'Copy';
+                copyBtnText.textContent = 'Copy Email';
                 copyBtn.classList.remove('copied');
             }, 2000);
         } catch (err) {
             copyBtnText.textContent = 'Failed';
+            setTimeout(() => {
+                copyBtnText.textContent = 'Copy Email';
+            }, 2000);
         }
         document.body.removeChild(textArea);
     });
