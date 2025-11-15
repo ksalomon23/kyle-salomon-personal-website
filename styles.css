@@ -1,15 +1,17 @@
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --accent-color: #3b82f6;
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
-    --bg-light: #f9fafb;
+    --primary-color: #8B4513;
+    --secondary-color: #6B3410;
+    --accent-color: #A0522D;
+    --text-dark: #2C1810;
+    --text-light: #6b5d52;
+    --bg-light: #FAF8F5;
     --bg-white: #ffffff;
-    --border-color: #e5e7eb;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --border-color: #E5DDD5;
+    --desert-sand: #D2B48C;
+    --desert-warm: #C19A6B;
+    --shadow-sm: 0 1px 2px 0 rgba(139, 69, 19, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(139, 69, 19, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(139, 69, 19, 0.15);
 }
 
 * {
@@ -74,11 +76,31 @@ html {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #C19A6B 100%);
     color: white;
     padding: 8rem 2rem 6rem;
     margin-top: 70px;
     text-align: center;
+}
+
+.hero-image-container {
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.hero-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content h1 {
@@ -207,7 +229,7 @@ html {
 .current-focus {
     margin-top: 3rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: linear-gradient(135deg, #FAF8F5 0%, #F5EDE4 100%);
     border-radius: 0.75rem;
     border-left: 4px solid var(--primary-color);
 }
@@ -250,7 +272,7 @@ html {
 
 /* Current Role Section */
 .current-role-section {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    background: linear-gradient(135deg, #FAF8F5 0%, #F0E8DC 100%);
 }
 
 .current-role-card {
@@ -272,7 +294,7 @@ html {
 
 .role-badge {
     display: inline-block;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--desert-warm));
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 2rem;
@@ -564,10 +586,125 @@ html {
     color: var(--text-light);
 }
 
+/* Email Contact Card */
+.email-contact-card {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.email-contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(139, 69, 19, 0.12);
+    border-color: var(--primary-color);
+}
+
+.email-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.contact-icon-large {
+    font-size: 2rem;
+}
+
+.email-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.email-address {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+}
+
+.email-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.btn-email {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.btn-email-gmail {
+    background: #EA4335;
+    color: white;
+}
+
+.btn-email-gmail:hover {
+    background: #d33426;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-email-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-email-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-email-secondary {
+    background: var(--bg-white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-email-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-email-secondary.copied {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.email-hint {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
 .contact-methods {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .contact-item {
@@ -610,6 +747,11 @@ html {
         font-size: 0.875rem;
     }
 
+    .hero-image {
+        width: 150px;
+        height: 150px;
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -648,6 +790,24 @@ html {
         width: 100%;
         max-width: 300px;
     }
+
+    .email-buttons {
+        gap: 0.5rem;
+    }
+
+    .btn-email {
+        min-width: 100px;
+        padding: 0.65rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .email-address {
+        font-size: 1.1rem;
+    }
+
+    .email-contact-card {
+        padding: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -661,11 +821,39 @@ html {
         justify-content: center;
     }
 
+    .hero-image {
+        width: 130px;
+        height: 130px;
+    }
+
     .hero-content h1 {
         font-size: 2rem;
     }
 
     .hero {
         padding: 6rem 1rem 4rem;
+    }
+
+    .email-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-email {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .email-address {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+
+    .contact-icon-large {
+        font-size: 1.75rem;
+    }
+
+    .email-contact-card {
+        padding: 1.25rem;
     }
 }

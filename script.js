@@ -87,3 +87,41 @@ const createMobileMenu = () => {
 
 // Log page load
 console.log('Kyle Salomon Portfolio - Loaded Successfully');
+
+// Copy email to clipboard function
+function copyEmail() {
+    const email = 'ksalomon@asu.edu';
+    const copyBtn = document.getElementById('copyBtn');
+    const copyBtnText = document.getElementById('copyBtnText');
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+        // Success feedback
+        copyBtnText.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+            copyBtnText.textContent = 'Copy';
+            copyBtn.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            copyBtnText.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtnText.textContent = 'Copy';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            copyBtnText.textContent = 'Failed';
+        }
+        document.body.removeChild(textArea);
+    });
+}
