@@ -128,3 +128,44 @@ function copyEmail() {
         document.body.removeChild(textArea);
     });
 }
+
+// Copy business email to clipboard function
+function copyBusinessEmail() {
+    const email = 'kyle.salomon@dbtlabs.com';
+    const copyBtn = document.getElementById('copyBusinessBtn');
+    const copyBtnText = document.getElementById('copyBusinessBtnText');
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+        // Success feedback
+        copyBtnText.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+            copyBtnText.textContent = 'Copy Email';
+            copyBtn.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            copyBtnText.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtnText.textContent = 'Copy Email';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            copyBtnText.textContent = 'Failed';
+            setTimeout(() => {
+                copyBtnText.textContent = 'Copy Email';
+            }, 2000);
+        }
+        document.body.removeChild(textArea);
+    });
+}
