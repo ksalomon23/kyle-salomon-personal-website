@@ -1,6 +1,6 @@
 # Kyle Salomon - Personal Website
 
-A modern, professional personal website showcasing my experience as an Analytics Leader and Data Professional.
+A modern, professional personal website showcasing my experience as a Solutions Architect and Data & AI Leader.
 
 ## Project Structure
 

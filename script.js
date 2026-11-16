@@ -88,84 +88,46 @@ const createMobileMenu = () => {
 // Log page load
 console.log('Kyle Salomon Portfolio - Loaded Successfully');
 
-// Copy email to clipboard function
-function copyEmail() {
-    const email = 'ksalomon@asu.edu';
-    const copyBtn = document.getElementById('copyBtn');
-    const copyBtnText = document.getElementById('copyBtnText');
-    
-    // Copy to clipboard
-    navigator.clipboard.writeText(email).then(() => {
-        // Success feedback
-        copyBtnText.textContent = 'Copied!';
-        copyBtn.classList.add('copied');
-        
-        // Reset after 2 seconds
+// Copy an email address to the clipboard and show feedback on its button
+function copyEmailToClipboard(email, buttonId, buttonTextId) {
+    const copyBtn = document.getElementById(buttonId);
+    const copyBtnText = document.getElementById(buttonTextId);
+
+    const showResult = (label, copied) => {
+        copyBtnText.textContent = label;
+        if (copied) copyBtn.classList.add('copied');
         setTimeout(() => {
             copyBtnText.textContent = 'Copy Email';
             copyBtn.classList.remove('copied');
         }, 2000);
-    }).catch(err => {
-        // Fallback for older browsers
+    };
+
+    navigator.clipboard.writeText(email).then(() => {
+        showResult('Copied!', true);
+    }).catch(() => {
+        // Fallback for browsers without the async clipboard API
         const textArea = document.createElement('textarea');
         textArea.value = email;
         document.body.appendChild(textArea);
         textArea.select();
         try {
             document.execCommand('copy');
-            copyBtnText.textContent = 'Copied!';
-            copyBtn.classList.add('copied');
-            setTimeout(() => {
-                copyBtnText.textContent = 'Copy Email';
-                copyBtn.classList.remove('copied');
-            }, 2000);
+            showResult('Copied!', true);
         } catch (err) {
-            copyBtnText.textContent = 'Failed';
-            setTimeout(() => {
-                copyBtnText.textContent = 'Copy Email';
-            }, 2000);
+            showResult('Failed', false);
         }
         document.body.removeChild(textArea);
     });
 }
 
-// Copy business email to clipboard function
+function copyEmail() {
+    copyEmailToClipboard('ksalomon@asu.edu', 'copyBtn', 'copyBtnText');
+}
+
+function copyFivetranEmail() {
+    copyEmailToClipboard('kyle.salomon@fivetran.com', 'copyFivetranBtn', 'copyFivetranBtnText');
+}
+
 function copyBusinessEmail() {
-    const email = 'kyle.salomon@dbtlabs.com';
-    const copyBtn = document.getElementById('copyBusinessBtn');
-    const copyBtnText = document.getElementById('copyBusinessBtnText');
-    
-    // Copy to clipboard
-    navigator.clipboard.writeText(email).then(() => {
-        // Success feedback
-        copyBtnText.textContent = 'Copied!';
-        copyBtn.classList.add('copied');
-        
-        // Reset after 2 seconds
-        setTimeout(() => {
-            copyBtnText.textContent = 'Copy Email';
-            copyBtn.classList.remove('copied');
-        }, 2000);
-    }).catch(err => {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = email;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            document.execCommand('copy');
-            copyBtnText.textContent = 'Copied!';
-            copyBtn.classList.add('copied');
-            setTimeout(() => {
-                copyBtnText.textContent = 'Copy Email';
-                copyBtn.classList.remove('copied');
-            }, 2000);
-        } catch (err) {
-            copyBtnText.textContent = 'Failed';
-            setTimeout(() => {
-                copyBtnText.textContent = 'Copy Email';
-            }, 2000);
-        }
-        document.body.removeChild(textArea);
-    });
+    copyEmailToClipboard('kyle.salomon@dbtlabs.com', 'copyBusinessBtn', 'copyBusinessBtnText');
 }
